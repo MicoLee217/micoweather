@@ -1,0 +1,9 @@
+<litepal>
+    <dbname value="mico_weather"/>
+    <version value="0.10"/>
+    <list>
+        <mapping class="com.micoandroid.micoweather.db.Provience"/>
+        <mapping class="com.micoandroid.micoweather.db.City"/>
+        <mapping class="com.micoandroid.micoweather.db.County"/>
+    </list>
+</litepal>
