@@ -125,7 +125,7 @@ public class ChooseAreaFragment extends Fragment {
     * */
     private void queryCities() {
         titleText.setText(selectedProvience.getProvinceName());
-        backButton.setVisibility(View.GONE);
+        backButton.setVisibility(View.VISIBLE);
         cityList = DataSupport.where("provinceid = ?",String.valueOf(selectedProvience.getId())).find(City.class);
         if (cityList.size() > 0){
             dataList.clear();
@@ -147,7 +147,7 @@ public class ChooseAreaFragment extends Fragment {
     * */
     private void queryCouties() {
         titleText.setText(selectedCity.getCityName());
-        backButton.setVisibility(View.GONE);
+        backButton.setVisibility(View.VISIBLE);
         countyList = DataSupport.where("cityid = ?",String.valueOf(selectedCity.getId())).find(County.class);
         if (countyList.size() > 0){
             dataList.clear();
@@ -210,12 +210,21 @@ public class ChooseAreaFragment extends Fragment {
     * 关闭进度对话框
     * */
     private void closeProgressDialog() {
+        if (progressDialog != null){
+            progressDialog.dismiss();
+        }
     }
 
     /*
     * 显示进度对话框
     * */
     private void showProgessDialog() {
+        if (progressDialog == null){
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("正在加载，嘻嘻嘻.....");
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
     }
 
 }
